@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Li-Sa : Skin Cancer Detection</title>
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <!-- Fontawesome Link for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <style>
+    .logos{
+      width: 30%;
+      height: 30%;
+    }
+    #home{
+      background-image: url(/images/new.jpg);
+      height:100vh;
+      background-position: center;
+      background-size: cover;    
+    }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <h2 class="logo"><a href="#"><img class="logos" src="/images/logo.png" alt=""></a></h2>
+        <input type="checkbox" id="menu-toggler">
+        <label for="menu-toggler" id="hamburger-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 18h18v-2H3v2zm0-5h18V11H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </label>
+        <ul class="all-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="homepage" id="home">
+      <div class="content">
+        <div class="text">
+          <h1>Skin Cancer Detection</h1>
+          <p>
+            Find easily and fast that <br> You are safe from Skin Cancer OR Not.</p> 
+        </div>
+        <a href="#services">Our Services</a>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <h2>Our Services</h2>
+      <p>Explore Our Services For Skin Cancer Detection</p>
+      <ul class="cards">
+        <li class="card">
+          <img src="https://img.freepik.com/free-vector/hand-drawn-flat-design-melanoma-illustration_23-2149382144.jpg?w=740&t=st=1696659281~exp=1696659881~hmac=f15afa9d335263db11cb07fce5c812478d50260718d2707c6201fbae136c6d59" alt="img">
+          <h3>Malonoma Cancer Detection</h3>
+          <p>By using this you can check that you have Malonoma Cancer OR Not</p>
+          <a href="test">Let's Check</a>
+        </li>
+      </ul>
+    </section>
+
+
+
+    <section class="about" id="about">
+      <h2>About Us</h2>
+      <p>Discover our story in providing Skin Cancer Detection services.</p>
+      <div class="row mission-vision">
+        <h3>Our Mission</h3>
+        <p>Providing aid to people by early detection of skin cancer making people's life easy and comfortable. We strive to make this process more user friendly, cost effective, reliable and trustworthy.</p>
+      </div>
+      <div class="row team">
+        <h3>Our Team</h3>
+        <ul>
+          <li>Nirav Jangale - Web Developer</li>
+          <li>Ashwin Ruke - Python Model Developer</li>
+          <li>Kartik Patel - Researcher</li>
+          <li>Jayesh Mahale - Researcher</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2>Contact Us</h2>
+      <p>Reach out to us for any inquiries or feedback.</p>
+      <div class="row">
+        <div class="col information">
+          <div class="contact-details">
+            <p><i class="fas fa-map-marker-alt"></i> Ahmedabad,Gujarat,India</p>
+            <p><i class="fas fa-envelope"></i> niravjangale@gmail.com</p>
+            <p><i class="fas fa-phone"></i>+91 9016760920</p>
+            <p><i class="fas fa-clock"></i> Monday - Friday: 9:00 AM - 5:00 PM</p>
+            <p><i class="fas fa-clock"></i> Saturday: 10:00 AM - 3:00 PM</p>
+            <p><i class="fas fa-clock"></i> Sunday: Closed</p>
+            <p><i class="fas fa-globe"></i> http://niravjangale.me</p>
+          </div>          
+        </div>
+        <div class="col form">
+          <form action="/send-email" method="POST">
+            <input type="text" name='name' placeholder="Name*" required>
+            <input type="email" name="email" placeholder="Email*" required>
+            <textarea placeholder="Message*" name="message" required></textarea>
+            <button id="submit" type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>
+        <span>Copyright © 2023 All Rights Reserved</span>
+        <span class="link">
+            <a href="#">Home</a>
+            <a href="#contact">Contact</a>
+        </span>
+      </div>
+    </footer>
+
+  </body>
+</html>

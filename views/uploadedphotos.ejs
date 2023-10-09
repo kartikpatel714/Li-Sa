@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Image Uploading</title>
+	<style>
+		/* Add this to your existing CSS or create a new CSS file */
+.animated-button {
+	background-color: #f44336;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+  }
+  
+  .animated-button:hover {
+	background-color: #d32f2f;
+  }
+  
+	</style>
+</head>
+
+<body>
+	<button id="clearButton" class="animated-button">Clear All Photos</button>
+
+
+	<hr />
+
+	<h1>Uploaded Images</h1>
+	<div>
+	<% items.forEach(function(image) { %>
+	<div>
+		<div class="image-container">
+		<img
+			src="data:image/<%=image.img.contentType%>;base64,
+					<%=image.img.data.toString('base64')%>"
+		/>
+		<div>
+			<h5><%= image.name %></h5>
+
+			<p><%= image.desc %></p>
+		</div>
+		
+		
+
+		</div>
+	</div>
+	<% }) %>
+	
+		
+	
+	</div>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+		  const clearButton = document.getElementById('clearButton');
+		  const imageContainers = document.querySelectorAll('.image-container');
+	  
+		  clearButton.addEventListener('click', function () {
+			// Loop through all image containers and remove them
+			imageContainers.forEach(function (container) {
+			  container.remove();
+			});
+	  
+			// Optionally, you can send an AJAX request to your server to clear images from the database
+			// and perform any necessary backend tasks.
+		  });
+		});
+	  </script>
+	  
+</body>
+</html>

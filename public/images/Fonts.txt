@@ -1,0 +1,9 @@
+Fonts used in this design:
+
+Font: Oswald
+Author: Vernon Adams,Kalapi Gajjar,Cyreal
+Url: https://fonts.google.com/specimen/Oswald
+
+Font: Praise
+Author: Robert Leuschke
+Url: https://fonts.google.com/specimen/Praise

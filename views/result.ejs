@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Result</title>
+<style>
+    /* Reset some default styles */
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply a background color to the body */
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+}
+
+/* Style the header */
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Style the main content */
+main{
+    height: auto;
+    width: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Style the score and grade */
+.result{
+    font-size: 1.5rem;
+}
+.score {
+    font-size: 24px;
+    color: #009900;
+}
+
+.grade {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+/* Add this to your existing CSS */
+.chart-container {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    width: 100%; /* Adjust the width as needed */
+    height: auto; /* Adjust the height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the footer */
+footer {
+    position: fixed; /* Fixed positioning to keep it at the bottom */
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+main:hover{
+    transform: scale(1.2);
+}
+
+
+/* Add responsiveness */
+@media screen and (max-width: 768px) {
+    main {
+        padding: 10px;
+        width: 80%;
+    }
+    .chart-container {
+        width: 200px;
+        height: 200px;
+    }
+    main:hover{
+        transform: scale(1);
+    }
+    .result {
+        margin-top: 10px;
+        font-size: 1.5rem;
+    }
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <h1>Test Result</h1>
+    </header>
+    <div class="main">
+    <main>
+        <section class="result">
+            <p class="name">Dear <%= sessionName %>.</p>
+            <p>Your Test Result: <span class="score"><%= result %>%</span></p>
+            <div class="chart-container">
+                <canvas id="pieChart" width="400" height="400"></canvas>
+            </div>
+
+        </section>
+    </main>
+    </div>
+    <footer>
+        <p>&copy; 2023</p>
+        <a href="home">Home</a>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+
+    <script>
+        // Get the result element from the DOM
+        const resultElement = document.querySelector('.score');
+    
+        // Extract the result value and convert it to a numeric value
+        const resultValue = parseFloat(resultElement.textContent);
+    
+        // Calculate healthy cell percentage
+        const healthyCellPercentage = 100 - resultValue;
+    
+        // Create a data array for the pie chart
+        const data = {
+            labels: ['Cancer Cell', 'Healthy Cell'],
+            datasets: [{
+                data: [resultValue, healthyCellPercentage],
+                backgroundColor: ['#FF5733', '#33FF57'],
+            }],
+        };
+    
+        // Get the canvas element and create the pie chart
+        const pieChart = document.getElementById('pieChart').getContext('2d');
+        new Chart(pieChart, {
+            type: 'pie',
+            data: data,
+            options: {
+                responsive: false, // Disable responsiveness
+            },
+        });
+    </script>
+    
+</body>
+</html>
+
