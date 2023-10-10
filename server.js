@@ -15,8 +15,9 @@ var path = require('path');
 app.use(express.static('public'));
 app.set("view engine", "false");
 
-const dotenv = require("dotenv");
-dotenv.config();
+const dotenv = require('dotenv');
+dotenv.config({ path: '.env' });
+
 
 // Generate a random secret key
 const secretKey = crypto.randomBytes(64).toString('hex');
@@ -29,10 +30,17 @@ app.use(
     saveUninitialized: true,
   })
 );
-mongoose.connect("mongodb://127.0.0.1:27017/imagesInMongoApp")
+const mongoURL = process.env.Mongo_URL
+
+mongoose.connect(mongoURL,{
+  useNewUrlParser:true,
+  // useCreateIndex:true,
+  useUnifiedTopology:true,
+  // useFindAndModify:false
+})
   .then(() => console.log("Connection successful..."))
   .catch((err) => console.log(err));
-
+console.log(process.env.Mongo_URL)
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -50,10 +58,11 @@ var storage = multer.diskStorage({
   }
 });
 
+
 var upload = multer({ storage: storage });
 
 app.get('/',(req,res)=>{
-  res.render('home.ejs')
+  res.render('index.ejs')
 })
 app.get('/image', (req, res) => {
   imgSchema.find({})
@@ -61,13 +70,13 @@ app.get('/image', (req, res) => {
       if (err) {
         console.log(err);
       }
-      res.render('uploadedphotos', { items: data });
+      res.render('uploadedphotos.ejs', { items: data });
     });
 });
 
 //redirect test page
 app.get('/test',(req,res)=>{
-  res.render('test')
+  res.render('test.ejs')
 })
 //redirect result page which is already set to redirect when user upload photo and details then it calls py script to use model and predict output
 app.get('/result', (req, res) => {
@@ -109,7 +118,7 @@ app.get('/result', (req, res) => {
         });
 
       // Render the HTML page and pass the Python script result as a variable
-      res.render('result', { result, email: recipientEmail ,sessionName});
+      res.render('result.ejs', { result, email: recipientEmail ,sessionName});
     } else {
       console.error(`Python script execution failed with code ${code}`);
     }
@@ -139,14 +148,15 @@ async function sendEmailWithPDF(result, recipientEmail, dynamicHtml) {
     });
 
     await browser.close();
-
+UserName=process.env.UserName
+UserPassword=process.env.UserPassword
     const transporter = nodemailer.createTransport({
       host: 'smtp.sendgrid.net',
       port: 587,
       secure: false,
       auth: {
-        user: 'apikey', // SMTP username
-        pass: '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', // SMTP password
+        user:'apikey' , // SMTP username
+        pass:UserPassword , // SMTP password
       },
     });
 
