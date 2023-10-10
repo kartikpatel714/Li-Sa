@@ -13,7 +13,7 @@ const { spawn } = require('child_process');
 var fs = require('fs');
 var path = require('path');
 app.use(express.static('public'));
-app.set("view engine", "ejs");
+app.set("view engine", "false");
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -54,7 +54,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 app.get('/',(req,res)=>{
-  res.render('home')
+  res.render('home.ejs')
 })
 app.get('/image', (req, res) => {
   imgSchema.find({})
